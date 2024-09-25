@@ -1,0 +1,23 @@
+mat-dialog-title {
+    display: flex;
+    align-items: center;
+  }
+  
+  mat-icon {
+    margin: 0px 0px -3px 1px;
+    color: #747474
+  }
+  
+  mat-dialog-content {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  mat-dialog-actions {
+    justify-content: flex-end;
+  }
+  
+  button {
+    color: #242424; 
+  }
+  

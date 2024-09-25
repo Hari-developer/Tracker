@@ -1,0 +1,64 @@
+<div class="background-image"></div>
+<div class="search-container">
+  <div class="search-bar">
+    <div class="search-icon">
+      <mat-icon>search</mat-icon>
+    </div>
+    <input type="text" class="search-input" [formControl]="searchControl" placeholder="Search Details">
+  </div>
+
+  <div class="centered-results">
+    <div class="search-results" *ngIf="searchControl.value && searchControl.value.trim() !== ''">
+
+      <div *ngIf="searchResults.users.length">
+        <h4>Users</h4>
+        <ul>
+          <ng-container *ngFor="let user of searchResults.users">
+            <li *ngIf="hasValidRole(user)">
+              <mat-icon>person</mat-icon>
+              <span style="text-transform: uppercase;">{{ user.username }}</span>
+              <ng-container *ngFor="let role of user.roles">
+                <span *ngIf="['ROLE_LEAD', 'ROLE_MEMBER'].includes(role.name)" class="role-name">
+                  ({{ getRoleName(role.name) }})
+                </span>
+              </ng-container>
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+      
+      
+      
+
+
+      <div *ngIf="searchResults.applications.length">
+        <h4>Applications</h4>
+        <ul>
+          <li *ngFor="let application of searchResults.applications">
+            <mat-icon>app_registration</mat-icon>
+            <a [href]="application.appLink" target="_blank" class="app-link"
+              style="text-decoration: none;text-transform: uppercase;color: #424242;font-weight: 500;">{{
+              application.appName }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <div *ngIf="searchResults.trackers.length">
+        <h4>Trackers</h4>
+        <ul>
+          <li *ngFor="let tracker of searchResults.trackers">
+            <mat-icon>track_changes</mat-icon>
+            <a [href]="tracker.trackerLink" target="_blank" class="tracker-link"
+              style="text-decoration: none;text-transform: uppercase;color: #424242;font-weight: 500;">{{
+              tracker.trackerName }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="no-results" *ngIf="showNoDataFound">
+        <mat-icon>search_off</mat-icon>
+        <p>No data found</p>
+      </div>
+    </div>
+  </div>
+</div>

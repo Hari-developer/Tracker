@@ -1,0 +1,18 @@
+<div class="profile-popup">
+    <div class="profile-header">
+      <div class="profile-avatar">
+        <mat-icon>account_circle</mat-icon>
+      </div>
+      <button mat-icon-button (click)="onClose()">
+        <mat-icon class="close-popup">close</mat-icon>
+      </button>
+    </div>
+    <div class="profile-content">
+      <div class="profile-details">
+        <h3>{{ userData.username }}</h3>
+        <p><strong>Employee ID:</strong> {{ userData.userEmpId }}</p>
+        <p><strong>Role:</strong> {{ getRole() }}</p>
+      </div>
+    </div>
+  </div>
+  

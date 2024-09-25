@@ -1,0 +1,80 @@
+.custom-dialog-title {
+    background-color: #3f51b5;
+    color: white;
+    padding: 12px;
+    margin: -24px -24px 16px -24px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    font-size: 18px;
+  }
+  
+  .dialog-content {
+    padding: 16px;
+    max-width: 300px; /* Reduce overall form width */
+    margin: 0 auto; /* Center the form content */
+  }
+  
+  .custom-form-field {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center; /* Center align buttons */
+    gap: 12px;
+    margin-top: 16px;
+  }
+  
+  ::ng-deep .mat-form-field-outline {
+    background-color: #f5f5f5;
+  }
+  
+  ::ng-deep .mat-select-arrow {
+    color: #3f51b5;
+  }
+  
+  ::ng-deep .mat-form-field.mat-focused .mat-form-field-outline-thick {
+    color: #3f51b5;
+  }
+  
+  /* Reduce input field size */
+  ::ng-deep .mat-form-field-infix {
+    width: 180px !important;
+  }
+  
+  /* Adjust input text size */
+  ::ng-deep .mat-input-element,
+  ::ng-deep .mat-select-value-text {
+    font-size: 14px;
+  }
+  
+  /* Reduce height of input fields */
+  ::ng-deep .mat-form-field-flex {
+    height: 45px;
+  }
+  
+  /* Adjust label size */
+  ::ng-deep .mat-form-field-label {
+    font-size: 14px;
+  }
+  
+  /* Reduce button size */
+  .mat-raised-button,
+  .mat-stroked-button {
+    font-size: 12px;
+    padding: 0px 20px;
+  }
+  .mat-form-field-appearance-outline .mat-form-field-infix {
+      padding: 7px 1px 5px 1px;
+  }
+  
+  .green-snackbar {
+      background-color: #4caf50; 
+      color: white;
+    }
+    
+    .red-snackbar {
+      background-color: #f44336; 
+      color: white;
+    }

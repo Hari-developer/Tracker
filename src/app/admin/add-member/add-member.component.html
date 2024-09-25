@@ -1,0 +1,63 @@
+<h1 mat-dialog-title class="custom-dialog-title">Create User</h1>
+<div class="dialog-content">
+  <div mat-dialog-content>
+    <form [formGroup]="createUserForm" id="validate" (ngSubmit)="validate()">
+      
+      <mat-form-field appearance="outline" class="custom-form-field">
+        <mat-label>User Name</mat-label>
+        <input matInput placeholder="Enter User Name" autocomplete="off" id="employeeName"
+               formControlName="employeeName">
+        <mat-error *ngIf="createUserForm.controls['employeeName'].hasError('required')">
+          Employee Name is required
+        </mat-error>
+        <mat-error *ngIf="createUserForm.controls['employeeName'].hasError('minlength')">
+          Employee Name must be at least 3 characters long
+        </mat-error>
+        <mat-error *ngIf="createUserForm.controls['employeeName'].hasError('maxlength')">
+          Employee Name cannot exceed 20 characters
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="custom-form-field">
+        <mat-label>Employee ID</mat-label>
+        <input matInput placeholder="Enter Employee ID" autocomplete="off" id="userEmpId"
+               formControlName="userEmpId">
+        <mat-error *ngIf="createUserForm.controls['userEmpId'].hasError('required')">
+          Employee ID is required
+        </mat-error>
+        <mat-error *ngIf="createUserForm.controls['userEmpId'].hasError('minlength')">
+          Employee ID must be at least 3 characters long
+        </mat-error>
+        <mat-error *ngIf="createUserForm.controls['userEmpId'].hasError('maxlength')">
+          Employee ID cannot exceed 20 characters
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="custom-form-field">
+        <mat-label>Select  Lead</mat-label>
+        <mat-select formControlName="leadId" id="select">
+          <mat-option *ngFor="let lead of leads; let i=index;" [value]="lead" id="{{ 'option' + i }}">
+            {{lead.leadName}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="createUserForm.controls['leadId'].hasError('required')">
+          Lead is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="custom-form-field">
+        <mat-label>Select Role</mat-label>
+        <mat-select formControlName="roleName" id="select" [disabled]="true">
+          <mat-option [value]="ROLE_MEMBER">
+            ROLE_MEMBER
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="button-container">
+        <button mat-raised-button color="primary" id="submit-user" type="submit">Submit</button>
+        <button mat-stroked-button color="warn" [mat-dialog-close]="true" id="closeCreateUser">Close</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.logo-text {
+  font-size: 24px;
+  margin-left: 8px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.nav-button {
+  min-width: 0;
+  padding: 0 8px;
+}
+
+.nav-button mat-icon {
+  margin-right: 8px;
+}
+
+app-searchbar {
+  display: block;
+  margin-top: 64px; 
+}
+
+@media (max-width: 600px) {
+  .nav-button span {
+    display: none;
+  }
+  
+  .nav-button mat-icon {
+    margin-right: 0;
+  }
+}

@@ -1,0 +1,51 @@
+<h1 mat-dialog-title class="custom-dialog-title">Create Lead</h1>
+<div class="dialog-content">
+  <div mat-dialog-content>
+    <form [formGroup]="addLeadForm" id="validate" (ngSubmit)="validate()">
+      
+      <mat-form-field appearance="outline" class="custom-form-field">
+        <mat-label>Lead Name</mat-label>
+        <input matInput placeholder="Enter lead Name" autocomplete="off" id="leadName"
+               formControlName="leadName">
+        <mat-error *ngIf="addLeadForm.controls['leadName'].hasError('required')">
+          Lead Name is required
+        </mat-error>
+        <mat-error *ngIf="addLeadForm.controls['leadName'].hasError('minlength')">
+          Lead Name must be at least 3 characters long
+        </mat-error>
+        <mat-error *ngIf="addLeadForm.controls['leadName'].hasError('maxlength')">
+          Lead Name cannot exceed 20 characters
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="custom-form-field">
+        <mat-label>Employee ID</mat-label>
+        <input matInput placeholder="Enter Employee ID" autocomplete="off" id="userEmpId"
+               formControlName="userEmpId">
+        <mat-error *ngIf="addLeadForm.controls['userEmpId'].hasError('required')">
+          Employee ID is required
+        </mat-error>
+        <mat-error *ngIf="addLeadForm.controls['userEmpId'].hasError('minlength')">
+          Employee ID must be at least 3 characters long
+        </mat-error>
+        <mat-error *ngIf="addLeadForm.controls['userEmpId'].hasError('maxlength')">
+          Employee ID cannot exceed 20 characters
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="custom-form-field">
+        <mat-label>Select Role</mat-label>
+        <mat-select formControlName="roleName" id="select" [disabled]="true">
+          <mat-option [value]="ROLE_LEAD">
+            ROLE_LEAD
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="button-container">
+        <button mat-raised-button color="primary" id="submit-user" type="submit">Submit</button>
+        <button mat-stroked-button color="warn" [mat-dialog-close]="true" id="closeCreateUser">Close</button>
+      </div>
+    </form>
+  </div>
+</div>

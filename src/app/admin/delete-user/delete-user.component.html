@@ -1,0 +1,15 @@
+<div class="dialog-container">
+    <h1 mat-dialog-title class="dialog-title">
+      {{operation | titlecase}} User
+      <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+        <mat-icon>close</mat-icon>
+      </button>
+    </h1>
+    <mat-dialog-content class="dialog-content">
+      <p>Do you want to {{operation}} the user <strong>{{data.rowdata.username}}</strong>?</p>
+    </mat-dialog-content>
+    <mat-dialog-actions align="center" class="dialog-actions">
+      <button mat-raised-button color="primary" id="yes-operation" (click)='deactivateUser()'>Yes</button>
+      <button mat-stroked-button color="primary" id="no-operation" [mat-dialog-close]="true">No</button>
+    </mat-dialog-actions>
+  </div>

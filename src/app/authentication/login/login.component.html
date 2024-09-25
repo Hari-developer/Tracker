@@ -1,0 +1,54 @@
+<app-home-nav></app-home-nav>
+<div class="background-container">
+  <div class="background-image"></div>
+  <!-- <div class="niq-text">Welcome !</div> -->
+</div>
+<form (ngSubmit)="onSubmit()" *ngIf="!isLoggedIn" [formGroup]="form" class="login-form">
+  <mat-card-header>
+    <div class="logo-container">
+      <span class="logo-text">NIQ</span>
+    </div>
+  </mat-card-header>
+
+  <mat-form-field appearance="fill">
+    <mat-label>
+      <mat-icon matPrefix>account_circle</mat-icon> Employee ID
+    </mat-label>
+    <input matInput formControlName="userEmpId">
+    <mat-error *ngIf="form.controls['userEmpId'].invalid && form.controls['userEmpId'].touched">
+      <span class="error" *ngIf="form.controls['userEmpId'].errors?.['required']">Employee ID is required</span>
+      <span class="error" *ngIf="form.controls['userEmpId'].errors?.['minlength'] || form.controls['userEmpId'].errors?.['maxlength']">
+        Employee ID must be between 5 and 10 characters
+      </span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>
+      <mat-icon matPrefix>lock</mat-icon>Password
+    </mat-label>
+    <input matInput [type]="hideNewPassword ? 'password' : 'text'" formControlName="password">
+    <button mat-icon-button matSuffix (click)="togglePasswordVisibility($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideNewPassword" class="visibility-toggle">
+      <mat-icon>{{hideNewPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+    <mat-error *ngIf="form.controls['password'].invalid && form.controls['password'].touched">
+      <span class="error" *ngIf="form.controls['password'].errors?.['required']">Password is required</span>
+    </mat-error>
+  </mat-form-field>
+
+  <div class="button">
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+      <mat-icon>login</mat-icon>
+      Login
+    </button>
+    <!-- <a routerLink="/register">
+      <mat-icon color="accent">add</mat-icon> 
+      <span>Don't have an account? </span>
+      <span class="color">Register</span>
+    </a> -->
+  </div>
+
+  <!-- <p *ngIf="isLoginFailed" class="error-message" >
+    {{ errorMessage }}
+  </p> -->
+</form>

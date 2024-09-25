@@ -1,0 +1,32 @@
+<mat-toolbar color="primary" class="navbar">
+  <mat-toolbar-row>
+    <span class="logo-text">Admin Dashboard</span>
+    <span class="flex-spacer"></span>
+    
+    <button mat-button class="nav-button" (click)="openAddLeadDialog()">
+      <mat-icon>person_add</mat-icon>
+      <span>Add Lead</span>
+    </button>
+    
+    <button mat-button class="nav-button" (click)="openAddMemberDialog()">
+      <mat-icon>group_add</mat-icon>
+      <span>Add Member</span>
+    </button>
+
+    <!-- <button mat-button class="nav-button" (click)="openAddAdminDialog()">
+      <mat-icon>settings</mat-icon>
+      <span>Add Admin</span>
+    </button>
+     -->
+    <span class="flex-spacer"></span>
+    
+    <button mat-button class="nav-button logout-button" (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

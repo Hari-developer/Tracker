@@ -1,0 +1,47 @@
+.logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo mat-icon {
+    margin-right: 5px;
+    font-size: 24px;
+  }
+  .sticky-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+    z-index: 1;
+  }
+  .logo-image {
+    width: auto;
+    height: 30px;
+    position: absolute;
+    animation: logoAnimation 10s linear infinite;
+  }
+  .logo{
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+    font-size: x-large;
+  }
+  
+  @keyframes logoAnimation {
+    0% {
+      left: 0;
+    }
+    100% {
+      left: calc(100% - 30px); 
+  }
+}
+  
+  

@@ -1,0 +1,50 @@
+<app-admin-nav></app-admin-nav>
+<div class="user-management-container">
+  <mat-card>
+    <mat-card-content>
+      <div class="page-heading">
+        <h1>User Management</h1>
+      </div>
+      <div class="table-container mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" class="user-table">
+          <ng-container matColumnDef="username">
+            <th mat-header-cell *matHeaderCellDef> User Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.username | titlecase}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="userEmpId">
+            <th mat-header-cell *matHeaderCellDef> User EmpId </th>
+            <td mat-cell *matCellDef="let element"> {{element.userEmpId | titlecase}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="roles">
+            <th mat-header-cell *matHeaderCellDef> Roles </th>
+            <td mat-cell *matCellDef="let element">
+              <span *ngFor="let role of element.roles; let last = last">
+                {{ role.name }}{{last ? '' : ', '}}
+              </span>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button color="primary" matTooltip="Edit User">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button *ngIf="element.active"  mat-icon-button color="warn" matTooltip="Delete User" (click)="openDeleteUserDialog(element)" >
+                <mat-icon>delete</mat-icon>
+              </button>
+              <button *ngIf="!element.active" mat-icon-button color="accent" matTooltip="Restore User"   (click)="openDeleteUserDialog(element)">
+                <mat-icon>restore</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

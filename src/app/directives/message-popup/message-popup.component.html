@@ -1,0 +1,14 @@
+<div [@slideInOut]="state" class="message-popup" [ngClass]="type">
+    <div class="sidebar"></div>
+    <div class="content">
+      <div class="icon">
+        <i class="fas" [ngClass]="{'fa-check-circle': type === 'success', 'fa-exclamation-circle': type === 'error'}"></i>
+      </div>
+      <div class="message">
+        <p>{{ message }}</p>
+      </div>
+      <button class="close-btn" (click)="close()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>

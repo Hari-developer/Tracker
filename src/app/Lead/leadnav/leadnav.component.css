@@ -1,0 +1,552 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.logo-text {
+  font-size: 24px;
+  margin-left: 8px;
+}
+
+.spacer {
+  flex: 0 1 auto;
+}
+
+.flex-spacer {
+  flex: 1 1 auto;
+}
+
+
+
+@media (max-width: 600px) {
+  .navbar button span {
+    display: none;
+  }
+}
+
+button.mat-button:hover {
+  background-color: rgba(255, 255, 255, 0.1); 
+  transform: scale(1.05); 
+  
+}
+
+/* Custom Menu Styles */
+
+::ng-deep .custom-menu .mat-icon {
+  margin-right: 10px;
+}
+
+
+.no-employees {
+  color: rgb(56, 56, 56) !important;
+  font-weight: 500;
+  text-align: center ;
+}
+
+
+.lead-name {
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.employee-name{
+ text-align: center;
+}
+
+.nav-button {
+  position: relative;
+}
+
+.nav-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border: 2px ;
+  border-radius: 5px;
+  height: 4px;
+  background-color: white;
+}
+
+.arrow-icon {
+  margin-left: 5px;
+}
+
+
+::ng-deep .mat-menu-panel{
+  margin-top: 22px;
+  min-height: auto !important;
+}
+
+
+/* Lead Menu and Employee Menu CSS */
+::ng-deep .lead-menu-custom-width,
+::ng-deep .employee-menu-custom-width {
+  min-width: 280px !important;
+}
+
+::ng-deep .lead-menu-custom-width .mat-menu-content,
+::ng-deep .employee-menu-custom-width .mat-menu-content {
+  padding: 0 !important;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+::ng-deep .lead-menu-custom-width .mat-menu-content::-webkit-scrollbar,
+::ng-deep .employee-menu-custom-width .mat-menu-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+::ng-deep .lead-menu-custom-width .mat-menu-content::-webkit-scrollbar-thumb,
+::ng-deep .employee-menu-custom-width .mat-menu-content::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+::ng-deep .lead-menu-custom-width .mat-menu-content::-webkit-scrollbar-track,
+::ng-deep .employee-menu-custom-width .mat-menu-content::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+::ng-deep .lead-menu-custom-width .mat-menu-item,
+::ng-deep .employee-menu-custom-width .mat-menu-item {
+  position: relative;
+  padding: 0 16px;
+  height: 48px;
+  line-height: 48px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  transition: background-color 0.3s ease;
+}
+
+::ng-deep .lead-menu-custom-width .mat-menu-item::before,
+::ng-deep .employee-menu-custom-width .mat-menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 4px;
+  background: linear-gradient(to bottom, #2196F3, #21CBF3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+::ng-deep .lead-menu-custom-width .mat-menu-item:hover::before,
+::ng-deep .employee-menu-custom-width .mat-menu-item:hover::before {
+  opacity: 1;
+}
+
+::ng-deep .lead-menu-custom-width .mat-menu-item:hover,
+::ng-deep .employee-menu-custom-width .mat-menu-item:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+::ng-deep .lead-menu-custom-width .lead-name,
+::ng-deep .employee-menu-custom-width .employee-name {
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+::ng-deep .lead-menu-custom-width .last-item,
+::ng-deep .employee-menu-custom-width .last-item {
+  border-bottom: none;
+}
+
+
+/* Employee Menu CSS */
+.employee-name {
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.employee-name:hover {
+  transition: color 0.3s ease;
+  color:#076bcf;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/* Employee Menu CSS */
+::ng-deep .employee-menu-custom-width {
+  width:280px;
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: #eeeff6; 
+  margin-top: 0px !important;
+}
+
+::ng-deep .employee-menu-custom-width .mat-menu-content {
+  padding: 0 !important;
+  background-color: #eeeff6; 
+}
+
+::ng-deep .employee-menu-custom-width .mat-menu-item {
+  color: white; 
+}
+
+::ng-deep .employee-menu-custom-width .no-employees {
+  color: gray;
+}
+
+::ng-deep .employee-menu-custom-width .employee-name {
+  color:rgba(0, 0, 0, 0.6);
+}
+
+::ng-deep .employee-menu-custom-width .employee-name[disabled] {
+  color: gray; 
+}
+
+::ng-deep .employee-menu-custom-width .employee-name span {
+  color: gray;
+}
+
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+}
+
+.chevron-icon {
+  margin-left: 4px; 
+  margin-top: 5px;
+  font-size: 18px; 
+}
+
+/* Current-user */
+
+.sidebar-indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #1976D2; 
+}
+
+.current-user {
+  background-color: rgba(25, 118, 210, 0.1); 
+  font-weight: 500;
+}
+
+.mat-menu-item .mat-icon {
+  margin-right: 16px;
+  vertical-align: middle;
+  margin-bottom: 3px;
+  font-size: 22px;
+}
+
+.current-user-icon {
+  font-size: 25px; 
+  color: #fff;
+  border-radius: 50%; 
+  padding: 8px; 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; 
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+/* Applications Menu CSS */
+::ng-deep .applications-menu-custom-width {
+  min-width: 200px !important;
+  margin-top: 22px;
+}
+
+::ng-deep .applications-menu-custom-width .mat-menu-content {
+  padding: 0 !important;
+}
+
+::ng-deep .applications-menu-custom-width .mat-menu-item {
+  position: relative;
+  padding: 0 16px;
+  height: 48px;
+  line-height: 48px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 500;
+}
+
+::ng-deep .applications-menu-custom-width .mat-menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 4px;
+  background: linear-gradient(to bottom, #2196F3, #21CBF3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+::ng-deep .applications-menu-custom-width .mat-menu-item:hover::before {
+  opacity: 1;
+}
+
+::ng-deep .applications-menu-custom-width .mat-menu-item:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+::ng-deep .applications-menu-custom-width .app-name {
+  flex-grow: 1;
+  text-align: left;
+}
+
+::ng-deep .applications-menu-custom-width .last-item {
+  border-bottom: none;
+}
+
+::ng-deep .applications-menu-custom-width .arrow-icon {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.54);
+  margin-left: 8px;
+}
+
+::ng-deep .applications-menu-custom-width .mat-menu-item:hover .arrow-icon {
+  color: #0056b3;
+}
+/* profile-popup */
+.profile-button {
+  margin-left: 8px;
+}
+
+.profile-menu-custom-width {
+  width: 300px;
+}
+
+::ng-deep .profile-menu-custom-width .mat-menu-content {
+  padding: 0 !important;
+}
+
+.profile-menu-content {
+  padding: 16px;
+  width: 220px;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  background-color: #3f51b5;
+  color: #fff;
+}
+
+.profile-avatar {
+  width: 64px;
+  height: 64px;
+  background-color: #f0f0f0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: #3f51b5;
+}
+
+.profile-details {
+  text-align: center;
+  padding-top: 16px;
+}
+
+.profile-details h3 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  color: #3f51b5;
+}
+
+.profile-details p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #555;
+  font-weight: 500;
+}
+/* Trackers Menu CSS */
+::ng-deep .trackers-menu-custom-width {
+  min-width: 200px !important;
+  margin-top: 22px;
+}
+
+::ng-deep .trackers-menu-custom-width .mat-menu-content {
+  padding: 0 !important;
+}
+
+::ng-deep .trackers-menu-custom-width .mat-menu-item {
+  position: relative;
+  padding: 0 16px;
+  height: 48px;
+  line-height: 48px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 500;
+}
+
+::ng-deep .trackers-menu-custom-width .mat-menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 4px;
+  background: linear-gradient(to bottom, #2196F3, #21CBF3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+::ng-deep .trackers-menu-custom-width .mat-menu-item:hover::before {
+  opacity: 1;
+}
+
+::ng-deep .trackers-menu-custom-width .mat-menu-item:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+::ng-deep .trackers-menu-custom-width .tracker-name {
+  flex-grow: 1;
+  text-align: left;
+}
+
+::ng-deep .trackers-menu-custom-width .last-item {
+  border-bottom: none;
+}
+
+::ng-deep .trackers-menu-custom-width .arrow-icon {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.54);
+  margin-left: 8px;
+}
+
+::ng-deep .trackers-menu-custom-width .mat-menu-item:hover .arrow-icon {
+  color: #0056b3;
+}
+
+::ng-deep .lead-menu-custom-width::-webkit-scrollbar {
+  width: 8px;
+}
+
+
+::ng-deep .member-menu-custom-width {
+  min-width: 200px !important;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+::ng-deep .member-menu-custom-width .mat-menu-content {
+  padding: 0 !important;
+}
+
+::ng-deep .member-menu-custom-width .mat-menu-item {
+  position: relative;
+  padding: 0 16px;
+  height: 48px;
+  line-height: 48px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  transition: background-color 0.3s ease;
+}
+
+::ng-deep .member-menu-custom-width .mat-menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 4px;
+  background: linear-gradient(to bottom, #2196F3, #21CBF3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+::ng-deep .member-menu-custom-width .mat-menu-item:hover::before {
+  opacity: 1;
+}
+
+::ng-deep .member-menu-custom-width .mat-menu-item:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+::ng-deep .member-menu-custom-width .member-name {
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+::ng-deep .member-menu-custom-width .mat-menu-item:last-child {
+  border-bottom: none;
+}
+
+::ng-deep .member-menu-custom-width .no-members {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+/* Current user's folder icon (employee) */
+.current-user-folder-icon {
+  height: 24px;
+  width: 24px;
+  margin-left: -12px;
+}
+
+.current-user-folder-icon:hover {
+  transform: scale(1.2); /* Scale up on hover */
+}
+
+/* Normal user's folder icon (employee) */
+.normal-user-folder-icon {
+  height: 24px;
+  width: 24px;
+  margin-left:40px;
+  opacity: 0.8;
+}
+
+.normal-user-folder-icon:hover {
+  transform: scale(1.2); /* Scale up on hover */
+}
+
+/* Current user's folder icon (lead) */
+.current-user-folder-icon-lead {
+  height: 24px;
+  width: 24px;
+}
+
+.current-user-folder-icon-lead:hover {
+  transform: scale(1.2); /* Scale up on hover */
+}
+
+/* Normal user's folder icon (lead) */
+.normal-user-folder-icon-lead {
+  height: 24px;
+  width: 24px;
+  margin-left: 16%;
+  opacity: 0.8;
+}
+
+.normal-user-folder-icon-lead:hover {
+  cursor: not-allowed; 
+}
+.normal-empuser-folder-icon-lead{
+  height: 24px;
+  width: 24px;
+  margin-left: 15%;
+  opacity: 0.8;
+
+}
+.normal-empuser-folder-icon-lead:hover{
+  transform: scale(1.2);
+}

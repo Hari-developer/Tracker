@@ -1,0 +1,270 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+/* Search container */
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Search bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  width: 580px;
+  max-width: 90vw;
+  height: 44px;
+  border: 1px solid #dfe1e5;
+  border-radius: 24px;
+  padding: 5px 8px;
+  margin-bottom: 20px;
+  position: fixed;
+  top: 14em; /* Adjust as needed */
+  background-color: white;
+  z-index: 1000; /* Ensure it stays on top of other content */
+}
+
+.search-bar:hover {
+  box-shadow: 0 1px 6px rgba(32,33,36,.28);
+  border-color: rgba(223,225,229,0);
+}
+
+/* Search icon */
+.search-icon {
+  padding: 0 13px;
+  color: #9aa0a6;
+}
+
+/* Search input */
+.search-input {
+  flex: 1;
+  height: 34px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
+/* Search buttons */
+.search-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.search-button {
+  background-color: #f8f9fa;
+  border: 1px solid #f8f9fa;
+  border-radius: 4px;
+  color: #3c4043;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  margin: 11px 4px;
+  padding: 0 16px;
+  line-height: 27px;
+  height: 36px;
+  min-width: 54px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.search-button:hover {
+  box-shadow: 0 1px 1px rgba(0,0,0,.1);
+  background-color: #f8f9fa;
+  border: 1px solid #dadce0;
+  color: #202124;
+}
+
+@media (max-width: 600px) {
+  .search-bar {
+    width: 90vw;
+  }
+}
+
+/* Role name */
+.role-name {
+  color: #007bff;
+  font-weight: 500;
+}
+
+/* Search results ul */
+.search-results ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.search-results li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.search-results mat-icon {
+  margin-right: 8px;
+}
+
+/* Search results */
+.search-results {
+  display: flex;
+  flex-direction: column;
+  margin-top:130px;
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width:580px;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.search-results h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.search-results h4 {
+  margin: 25px 0 10px;
+  color: #3b3b3b;
+  font-weight: 500 !important;
+}
+
+.search-results ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.search-results li {
+  display: flex;
+  align-items: center;
+  padding: 13px 240px 3px 10px;
+  justify-content:normal;
+  border-bottom: 1px solid #eee;
+}
+
+.search-results li:last-child {
+  border-bottom: none;
+  align-items: center;
+  padding: 13px 240px 3px 10px;
+  justify-content: normal;
+}
+
+.search-results mat-icon {
+  margin-right: 10px;
+  color: #007bff;
+}
+
+.search-results .lead-name,
+.search-results .role-name,
+.search-results .employee-name,
+.search-results .application-name,
+.search-results .tracker-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.search-results .role-name {
+  margin-left: 5px;
+  color: #076bcf;
+  font-weight: 500 !important;
+}
+
+.search-results .application-name,
+.search-results .tracker-name {
+  color: #007bff;
+}
+
+.centered-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 80px;
+}
+
+.search-results, .no-results {
+  max-width: 580px;
+  width: 100%;
+}
+
+.no-results {
+  text-align: center;
+  color: #5f6368;
+  padding: 20px;
+}
+
+.no-results mat-icon {
+  font-size: 48px;
+  height: 48px;
+  width: 48px;
+  margin-bottom: 10px;
+  color: #076bcf;
+  margin-top: 20px;             
+}
+
+.no-results p {
+  font-size: 16px;
+  margin: 0;
+}
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../../assets/images/login-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.background-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.329); 
+}
+
+/* Custom scrollbar styles */
+.search-results::-webkit-scrollbar {
+  width: 8px;
+}
+
+.search-results::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.search-results::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Firefox scrollbar */
+.search-results {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}

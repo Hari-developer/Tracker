@@ -1,0 +1,155 @@
+<mat-toolbar color="primary" class="navbar">
+  <mat-toolbar-row>
+    <span class="logo-text" style="text-transform: uppercase;">NiQ</span>
+    <span class="spacer"></span>
+
+    <button mat-button [matMenuTriggerFor]="leadMenu" class="nav-button" [class.active]="isLeadMenuOpen"
+      (menuOpened)="onLeadMenuOpened()" (menuClosed)="onLeadMenuClosed()">
+      <span>{{ userRole === 'ROLE_LEAD' ? 'Team Lead' : 'My Lead' }}</span>
+      <mat-icon class="chevron-icon">{{ isLeadMenuOpen ? 'expand_less' : 'expand_more' }}</mat-icon>
+    </button>
+
+    <mat-menu #leadMenu="matMenu" class="lead-menu-custom-width">
+      <ng-container *ngFor="let lead of leadData; let last = last">
+        <button mat-menu-item (click)="onLeadSelect(lead.leadId)" [matMenuTriggerFor]="employeeMenu"
+          [matMenuTriggerData]="{leadId: lead.leadId}" (menuOpened)="onEmployeeMenuOpened(lead.leadId)"
+          (menuClosed)="onEmployeeMenuClosed()" class="lead-name" [class.last-item]="last"
+          [class.current-user]="lead.leadId === currentLeadId && userRole === 'ROLE_LEAD'">
+          <div class="lead-item-content">
+            <div class="sidebar-indicator" *ngIf="lead.leadId === currentLeadId && userRole === 'ROLE_LEAD'"></div>
+            <mat-icon *ngIf="lead.leadId === currentLeadId && userRole === 'ROLE_LEAD'"
+              class="current-user-icon">person</mat-icon>
+            <span  style="display: inline-block;width: 170px;">{{ lead.leadName }}</span>
+            <img *ngIf="lead.leadId === currentLeadId && userRole === 'ROLE_LEAD'"
+            src="../../../assets/images/folder.png" alt="Folder" class="current-user-folder-icon-lead"
+            (click)="handleLeadClick(lead)">
+              <img *ngIf="lead.leadId !== currentLeadId && userRole == 'ROLE_LEAD'"
+              src="../../../assets/images/secure.png" alt="Folder" class="normal-user-folder-icon-lead">
+            <img *ngIf="userRole === 'ROLE_MEMBER'"
+              src="../../../assets/images/folder.png" alt="Folder" class="normal-empuser-folder-icon-lead"
+              (click)="handleLeadClick(lead)" >
+          </div>
+        </button>
+      </ng-container>
+    </mat-menu>
+
+    <mat-menu #employeeMenu="matMenu" [class]="'employee-menu-custom-width'">
+      <ng-template matMenuContent let-leadId="leadId">
+        <button mat-menu-item *ngIf="leadWithMappedEmployeeData.length === 0" class="no-employees">
+          <mat-icon>info</mat-icon>
+          No employees!
+        </button>
+        <button mat-menu-item *ngFor="let employee of leadWithMappedEmployeeData" class="employee-name"
+          [disabled]="!canAccessEmployee(employee)"
+          [class.current-user]="employee.userEmpId === currentUser.userEmpId && userRole !== 'ROLE_LEAD'"
+          (click)="$event.stopPropagation();">
+          <div class="employee-item-content">
+            <div class="sidebar-indicator"
+              *ngIf="employee.userEmpId === currentUser.userEmpId && userRole !== 'ROLE_LEAD'"></div>
+            <mat-icon *ngIf="employee.userEmpId === currentUser.userEmpId && userRole !== 'ROLE_LEAD'"
+              class="current-user-icon">person</mat-icon>
+            <span style="display: inline-block;width: 170px;">{{ employee.employeeName }}</span>
+            <img *ngIf="canAccessEmployee(employee) && employee.userEmpId === currentUser.userEmpId"
+              class="current-user-folder-icon" src="../../../assets/images/folder.png"
+              (click)="handleEmployeeClick(employee)">
+
+            <img *ngIf="canAccessEmployee(employee) && employee.userEmpId !== currentUser.userEmpId"
+              class="normal-user-folder-icon" src="../../../assets/images/folder.png"
+              (click)="handleEmployeeClick(employee)">
+            <img *ngIf="!canAccessEmployee(employee)" src="../../../assets/images/secure.png" alt="No Access"
+              class="folder-icon" style="height: 24px;width: 24px;margin-left: 2em;">
+          </div>
+        </button>
+      </ng-template>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="memberMenu" class="nav-button" *ngIf="userRole === 'ROLE_LEAD'"
+      (click)="getCurrentLeadEmployees()" (menuOpened)="onMemberMenuOpened()" (menuClosed)="onMemberMenuClosed()"
+      [class.active]="memberMenuOpen">
+      <span>Members</span>
+      <mat-icon class="chevron-icon">{{ memberMenuOpen ? 'expand_less' : 'expand_more' }}</mat-icon>
+    </button>
+
+    <mat-menu #memberMenu="matMenu" class="member-menu-custom-width">
+      <ng-container *ngIf="leadWithMappedEmployeeData.length === 0">
+        <button mat-menu-item class="no-members" disabled>
+          <mat-icon>info</mat-icon>
+          <span class="no-employees">No Employees</span>
+        </button>
+      </ng-container>
+
+      <ng-container *ngIf="leadWithMappedEmployeeData.length > 0">
+        <button mat-menu-item *ngFor="let member of leadWithMappedEmployeeData; let last = last" class="member-name"
+          [class.last-item]="last" (click)="handleEmployeeClick(member)">
+          <div class="member-item-content">
+            <span style="text-transform: uppercase;font-weight: 500;">{{ member.employeeName }}</span>
+          </div>
+        </button>
+      </ng-container>
+    </mat-menu>
+
+
+    <button mat-button [matMenuTriggerFor]="applicationsMenu" class="nav-button" [class.active]="isApplicationsMenuOpen"
+      (menuOpened)="onApplicationsMenuOpened()" (menuClosed)="onApplicationsMenuClosed()">
+      <span>Applications</span>
+      <mat-icon class="chevron-icon">{{ isApplicationsMenuOpen ? 'expand_less' : 'expand_more' }}</mat-icon>
+    </button>
+
+    <mat-menu #applicationsMenu="matMenu" class="applications-menu-custom-width">
+      <ng-container *ngFor="let app of applications; let last = last">
+        <a mat-menu-item [href]="app.appLink" target="_blank" [class.last-item]="last">
+          <span class="app-name" style="text-transform: uppercase;">{{ app.appName }}</span>
+          <mat-icon class="arrow-icon" fontSet="fa" fontIcon="fa-arrow-circle-right"
+            (click)="redirectToApp(app.appLink, $event)"></mat-icon>
+        </a>
+      </ng-container>
+    </mat-menu>
+
+
+    <button mat-button [matMenuTriggerFor]="trackersMenu" class="nav-button" [class.active]="isTrackerMenuOpen"
+      (menuOpened)="onTrackerMenuOpened()" (menuClosed)="onTrackerMenuClosed()">
+      <span>Trackers</span>
+      <mat-icon class="chevron-icon">{{ isTrackerMenuOpen ? 'expand_less' : 'expand_more' }}</mat-icon>
+    </button>
+
+    <mat-menu #trackersMenu="matMenu" class="trackers-menu-custom-width">
+      <ng-container *ngFor="let tracker of trackers; let last = last">
+        <a mat-menu-item [href]="tracker.trackerLink" target="_blank" [class.last-item]="last">
+          <span class="tracker-name" style="text-transform: uppercase;">{{ tracker.trackerName }}</span>
+          <mat-icon class="arrow-icon" fontSet="fa" fontIcon="fa-arrow-circle-right"
+            (click)="redirectToTracker(tracker.trackerLink, $event)"></mat-icon>
+        </a>
+      </ng-container>
+    </mat-menu>
+
+
+    <span class="flex-spacer"></span>
+    <button mat-button class="nav-button logout-button" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+
+
+    <button mat-icon-button [matMenuTriggerFor]="profileMenu" class="profile-button">
+      <mat-icon>person</mat-icon>
+    </button>
+
+    <mat-menu #profileMenu="matMenu" class="profile-menu-custom-width">
+      <div class="profile-menu-content">
+        <div class="profile-header">
+          <div class="profile-avatar">
+            <mat-icon>account_circle</mat-icon>
+          </div>
+        </div>
+        <div class="profile-details">
+          <h3>{{ userData.username }}</h3>
+          <p><strong>Employee ID:</strong> {{ userData.userEmpId }}</p>
+          <p><strong>Role:</strong> {{ getRole() }}</p>
+        </div>
+      </div>
+    </mat-menu>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<app-searchbar></app-searchbar>
